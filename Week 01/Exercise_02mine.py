@@ -59,9 +59,11 @@ for chain in chains:
     plt.plot(chain[:,0], '-', lw=1, c='gray')
 plt.show()
 
-M = np.median(data[0])
+M = data[:,0]
 
-print (M)
+Mass = np.median(M)
+
+print ("The median mass is: ", Mass)
 
 # CHALLENGE: find the best mass by flattening *only* the final step from
 #            each chain.
