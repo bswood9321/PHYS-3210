@@ -45,18 +45,104 @@ Created on Tue Aug 20 11:02:00 2019
 
 @author: gafeiden
 """
+import numpy as np
+import matplotlib.pyplot as plt
+
+# below is my basic approach for finding sin (x)
+
+# first, we need to set our x at what we are trying to solve. Here, I have set x 
+# equal to 200. A randomly chosen, yet large, number. 
+# At the same time, we must make sure that n is set to zero, so the MacLaurin series 
+# can properly sum from the 0th term.
+
+
 
 x, n = 200, 0
 sum = 0
 
+# As I will show afterwards, large values of x will blow up and be impossible for
+#a computer to calculate. However, as sin bounces between -1 and 1 around the unit circle,
+# we can simply subtract 2pi a number of times, until x is sufficiently small, and we 
+# will get the same result.
+
+
 while (x>2*np.pi):
     x = x-(2*np.pi)
+
+# Here is our MacLaurin series. I have set it up, as instructed, to only calculate until the
+# term is sufficiently small. We have also created a variable, "sum", that will add up the terms
+# this variable will be the result for the value of sin (x) we are calculating.
 
 while (np.absolute((((-1)**n/(np.math.factorial(2*n+1))) * x**(2*n+1)))>(1/10**8)):
 
     a = (((-1)**n/(np.math.factorial(2*n+1))) * x**(2*n+1))
     sum+=a
     n = n+1
-    print (a)
+    
+print(sum)    
+# As stated previously, this will not work for large values of x.
+
+#If we just run    
+ 
+x, n, sum, = 50, 0, 0
+
+while (np.absolute((((-1)**n/(np.math.factorial(2*n+1))) * x**(2*n+1)))>(1/10**8)):
+
+    a = (((-1)**n/(np.math.factorial(2*n+1))) * x**(2*n+1))
+    sum+=a
+    n = n+1
     
     
+# we will wither get a result that falls outside of the bounds of sin, or receive an error 
+#because the computer cannot handle the calculation.
+# This one happens to be calculable, but is well outside the bounds of sin.
+
+print(sum)
+
+#So, if we put our code to "shrink" x, back in:
+
+while (x>2*np.pi):
+    x = x-(2*np.pi)
+    
+#x becomes much smaller, and we are able to calculate it within the bounds of x.
+
+# To know how accurate our MacLaurin series is, we can compare the result with the np.sin() function
+
+sin = np.sin(x)
+
+error = sum-sin
+print (error)   
+
+# By gradually increasing x, we find that around the x value of 35 is where the summation really 
+# starts to separate itself from the actual sin() function. Prior to this point, the error was very,
+# very small, on the order of 10^-9. Between 35 and 40, it has separated itself enough that the
+#value we get using the MacLaurin series is outside of the bounds of the actual sin function.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
