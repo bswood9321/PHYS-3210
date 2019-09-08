@@ -38,3 +38,14 @@ plt.xlabel("X")
 plt.ylabel("Y")
 plt.show()
 
+#Answer for question 3
+
+Origindistance = np.sqrt((walker_1[0][-1]**2)+(walker_1[1][-1]**2))
+print("The distance from the origin to the final point is: ",Origindistance," units")
+
+#This gives the distance from the origin to the final point of the walker's "trip"
+# I do not imagine they would all be this distance. A true random walker should end up 
+# at almost any point between the origin and the max distance possible. 
+# In fact, after manually running the code a couple times, I have seen answers from 20-30 so far.
+
+
