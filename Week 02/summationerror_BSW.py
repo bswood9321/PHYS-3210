@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 
 
-N = int(input("Pick a number"))
+N = int(input("Pick a number: "))
 
 n, a, sum1, m, b, sum2 = 1, 0, 0, N, 0, 0
 
