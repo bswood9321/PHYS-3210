@@ -4,6 +4,9 @@ Spyder Editor
 
 This is a temporary script file.
 """
+import numpy as np
+import numpy.random as rand
+import matplotlib.pyplot as plt
 import time
 
 def powerResidue(N, seed=None, a=273673163155, c=13, M=2**48):
@@ -18,11 +21,11 @@ def powerResidue(N, seed=None, a=273673163155, c=13, M=2**48):
         pass
 
     r = seed
-    rand = []
+    rando = []
     for i in range(N):
-        rand.append(((a*r + c) % M)/M)
+        rando.append(((a*r + c) % M)/M)
         r = (a*r + c) % M
-    return rand[0:N]
+    return rando[0:N]
 
 
 Random1 = powerResidue(100)
@@ -48,4 +51,37 @@ Random5 = powerResidue(100)
 plt.plot(Random3)
 plt.plot(Random4)
 plt.plot(Random5)
+plt.title("Three random sequences using Power Residue function")
 plt.show()
+
+XPR= powerResidue(100)
+time.sleep(.003) # I had to add a pause because I kept getting a straight line
+YPR= powerResidue(100)
+XR=[]
+YR=[]
+i=1
+while i<=100:
+    XR.append(rand.random())
+    YR.append(rand.random())
+    i=i+1
+
+plt.plot(XPR,YPR,'r.')
+plt.title("Random scatter plot using powerResidue functions")
+plt.show()
+
+plt.plot(XR,YR,'k.')
+plt.title("Random scatter plot using Numpy's random function")
+plt.show()
+
+
+plt.plot(XPR,YPR,'r.')
+plt.title("The random scatter plots over each other")
+plt.plot(XR,YR,'k.')
+plt.show()
+
+
+
+
+
+
+    
