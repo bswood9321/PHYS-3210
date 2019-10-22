@@ -8,13 +8,12 @@ Created on Mon Oct 21 10:01:29 2019
 import numpy as np
 import matplotlib.pyplot as plt
 
-
-m=1
-k=50
-p=2
-t=np.linspace(0,20,100)
-
+h=.01
+m=int(input('Enter a mass: '))
+y1=[]
+v0=int(input('Enter a starting velocity: '))
+k=int(input('Enter a spring constant: '))
+p=int(input('Enter an even p-value between 2-12: '))
+y1.append(v0)
 i=0
-
-
-    
+t=[0]
