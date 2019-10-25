@@ -30,6 +30,7 @@ while t<15:
     
 plt.plot(T,X,label='position')
 plt.plot(T,V,label='velo')
+plt.grid()
 plt.legend(loc=(1.04,0))
 plt.xlabel('Time')
 
