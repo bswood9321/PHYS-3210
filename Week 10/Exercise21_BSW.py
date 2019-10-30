@@ -7,14 +7,13 @@ This is a temporary script file.
 
 import numpy as np
 import matplotlib.pyplot as plt
-import scipy.optimize as op
 
 k=10
 m=1
-dt=.01
+dt=.001
 t=0
-x0=0
-v0=-1
+x0=-3
+v0=0
 p=2
 x=x0
 v=v0
@@ -67,26 +66,11 @@ plt.plot(T,S,label='Stability')
 plt.legend()
 plt.show()
 
+KEave=np.sum(K)/len(K)
+PEave=np.sum(P)/len(P)
 
-i=0
-checkpk=[]
-checke=[]
-while i<=1500:
-    a=P[i]+K[i]
-    checkpk.append(a)
-    checke.append(E[i])
-    i=i+1
-plt.plot(checkpk,checke)
-plt.show()    
+print('Time average of Kinetic Energy= ',KEave) 
+print('Time average of Potential Energy= ',PEave)
 
 
-#A=v0
-#B=x0
-#T1=np.linspace(0,15,1500)
-#xt= (A*np.sin(T1*np.sqrt(k/m)))+(B*np.cos(T1*np.sqrt(k/m)))
-
-#plt.plot(T1,xt)
-#plt.show()
-
-#xt1 = lambda T1: A*np.sin(T1*np.sqrt(k/m))+B*np.cos(T1*np.sqrt(k/m))
 
