@@ -7,7 +7,8 @@ This is a temporary script file.
 
 # HIV Prblem 5.1
 
-import numpy as np, import matplotlib.plyplot as plt
+import numpy as np
+import matplotlib.pyplot as plt
 
 # First we need to set up all of our arrays
 # We will start with array "Time"
@@ -39,7 +40,7 @@ concentration = hiv_data['viral_load']
 
 A, B, alpha, beta = 140000, 0, 0.42, 0
 
-# As B is zerp, and the entire second part of the equation equals zero, it doesn't actually matter
+# As B is zero, and the entire second part of the equation equals zero, it doesn't actually matter
 # what the variable "beta" is set to. Here I set it to zero for ease.
 
 #Now we can re-run our "viral_load" equation to repopulate the array with the updated values
