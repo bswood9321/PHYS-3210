@@ -8,12 +8,25 @@ Created on Mon Nov  4 10:01:07 2019
 import numpy as np
 import matplotlib.pyplot as plt
 
-m=.511
-hbar=6.582e-22
+a=2
+E=-15
+K2=.0483*(E+V0)
+x=np.arange(-100,100,1.0e-2)
+Psi=[]
+i=0
+while i<=19999:
+    if np.abs(x[i])>a:
+        V0=0
+    else:
+        V0=-83
+    psi=np.exp((K2)*np.abs(x[i]))
+    Psi.append(psi)
+    i+=1
+    
 
-def psi(x,K):
-    if x<0:
-        psi=np.exp(K*x)
-    elif x>0:
-        psi=np.exp(-K*x)
-    return psi    
+
+
+
+plt.plot(x,Psi)
+plt.xlim(-3,3)
+plt.show()
