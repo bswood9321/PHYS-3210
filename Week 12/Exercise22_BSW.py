@@ -8,25 +8,36 @@ Created on Mon Nov  4 10:01:07 2019
 import numpy as np
 import matplotlib.pyplot as plt
 
+
+q=.0483
+E=15
+K=q*E
+V0=-83
+x=-100
+dx=1e-3
+X=[x]
+PSI=[np.exp(-K*np.abs(x))]
+dpsi=-(np.sign(x))*K*np.exp(-K*np.abs(x))
+psi=np.exp(-K*np.abs(x))
 a=2
-E=-15
-K2=.0483*(E+V0)
-x=np.arange(-100,100,1.0e-2)
-Psi=[]
-i=0
-while i<=19999:
-    if np.abs(x[i])>a:
-        V0=0
+
+while x <=100:
+    if np.abs(x)>a:
+        V=0
     else:
-        V0=-83
-    psi=np.exp((K2)*np.abs(x[i]))
-    Psi.append(psi)
-    i+=1
+        V=V0
+        
+    d2psi=(q*V+K**2)*np.exp(-K*np.abs(x))
+    dpsi=dpsi+d2psi*dx
+    psi=dpsi+dpsi*dx
     
-
-
-
-
-plt.plot(x,Psi)
-plt.xlim(-3,3)
+    PSI.append(psi)
+    x=x+dx
+    X.append(x)
+    
+plt.plot(X,PSI)
 plt.show()
+    
+    
+    
+    
