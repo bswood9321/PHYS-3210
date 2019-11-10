@@ -33,7 +33,6 @@ E=[tot]
 S=[s]
 while t<=15:
     f=-k*x**(p-1)
-    v=v+(f/m)*dt
     kx=(v+(f/m)*dt/2)*dt
     kv=-(k/m)*(x+v*(dt/2))*dt   
     v=v+kv
