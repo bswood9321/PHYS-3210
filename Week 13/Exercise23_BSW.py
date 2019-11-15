@@ -8,11 +8,11 @@ Created on Mon Nov 11 10:33:28 2019
 import numpy as np
 import matplotlib.pyplot as plt
 
-x0=4
-y0=2
-vx0=1
-vy0=1
-m=1
+x0=0.1
+y0=0.1
+vx0=.1
+vy0=.1
+m=.1
 t=0
 dt=.01
 x=x0
@@ -24,8 +24,8 @@ Y=[y]
 T=[t]
 
 while t<=10:
-    fx=-2*(y**2)*x*(x**2-1)*np.e**(-((x**2)+(y**2)))
-    fy=-2*(x**2)*y*(y**2-1)*np.e**(-((x**2)+(y**2)))
+    fx=-2*(y**2)*x*(1-x**2)*np.e**(-((x**2)+(y**2)))
+    fy=-2*(x**2)*y*(1-y**2)*np.e**(-((x**2)+(y**2)))
     vx=vx+fx/m*dt
     vy=vy+fy/m*dt
     x=x+vx*dt
