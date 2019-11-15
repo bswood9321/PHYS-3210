@@ -9,19 +9,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-x0=0.1
-y0=0.1
-vx0=.1
-vy0=.1
+#repeating path values, x0=.9, y0=.9, vx0=.21593090800323675, vy0=-.1, dt=.01
+
+
 
 x0=.9
 y0=.9
-vx0=.21593090800323675  #Okay I got tired of doing this but it goes around like 5 times lol
+vx0=.21593090800323675
 vy0=-.1
 
 m=.1
 t=0
-dt=.01
+dt=.0001
 x=x0
 y=y0
 vx=vx0
@@ -35,13 +34,17 @@ Vy=[vy]
 
 
 
-while t<=1000:
+while t<=100:
     fx=2*(y**2)*x*(x**2-1)*np.e**(-((x**2)+(y**2)))
     fy=2*(x**2)*y*(y**2-1)*np.e**(-((x**2)+(y**2)))
     vx=vx+fx/m*dt
     vy=vy+fy/m*dt
     x=x+vx*dt
+    if np.abs(x)>=3:
+        vx=-vx
     y=y+vy*dt
+    if np.abs(y)>=3:
+        vy=-vy
     X.append(x)
     Y.append(y)
     T.append(t)
