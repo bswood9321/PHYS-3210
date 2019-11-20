@@ -7,6 +7,7 @@ Created on Mon Nov 11 22:17:26 2019
 
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.patches as pat
 from mpl_toolkits.mplot3d import Axes3D 
 
 
@@ -60,8 +61,6 @@ def Ze(z,n):
 def delZe(z,m,n):
     delZe=np.absolute(Ze(z,m)-Ze(z,n))
     return delZe
-
-
 
 def prob_1s(x,y,z):
     r=np.sqrt(np.square(x)+np.square(y)+np.square(z))
@@ -199,7 +198,7 @@ def prob_3p(x,y,z):
     r=np.sqrt(np.square(x)+np.square(y)+np.square(z))
     phi=np.arctan(y/x)
     theta=np.arccos(z/r)
-    return np.square((np.sqrt(2)/81)*(1/(np.sqrt(np.pi)))*(np.e**(-r/3))*(6-r))
+    return np.square((np.sqrt(2)/81)*(1/(np.sqrt(np.pi)))*(np.e**(-r/3))*(6-r)*np.cos(theta))
 
 x=np.linspace(-25,25,30)
 y=np.linspace(-25,25,30)
