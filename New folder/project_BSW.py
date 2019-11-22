@@ -259,3 +259,36 @@ ax = fig.add_subplot(111, projection='3d')
 ax.scatter(x_coords, y_coords, z_coords, alpha=0.05)
 ax.set_title("Hydrogen 3d density")
 plt.show()
+
+
+n=1
+Es=[]
+Vs=[]
+while n<=10:
+    e=E(n)
+    Es.append([e,e])
+    vel=v(n)
+    Vs.append([vel,vel])
+    n=n+1
+
+
+
+x=[1,2]
+plt.figure(figsize=(1.5,6))
+plt.plot(x,Es[0],'k')
+plt.plot(x,Es[1],'k')
+plt.plot(x,Es[2],'k')
+plt.plot(x,Es[3],'k')
+plt.plot(x,Es[4],'k')
+plt.plot(x,Es[5],'k')
+plt.plot(x,Es[6],'k')
+plt.plot(x,Es[7],'k')
+plt.plot(x,Es[8],'k')
+plt.plot(x,Es[9],'k')
+plt.xlim(1.1,1.9)
+plt.yticks([-13.6, -3.4, -1.5, -.85, -.2],('n=1, -13.6eV','n=2, -3.4eV','n=3, -1.5eV','n=4,0.85eV','n=5+'))
+plt.xticks([])
+plt.title('Energy Levels of a Hydrogen Atom electron')
+plt.show()
+
+
