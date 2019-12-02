@@ -186,3 +186,59 @@ plt.xticks([396,410,434,485,656],('<---UV','410nm','434nm','486nm','656nm'))
 plt.title('Balmer series Hydrogen Emission Spectrum')
 plt.yticks([])
 plt.show()
+
+
+
+
+import numpy.linalg as la
+
+min1=0.
+max1=200.
+u=0.5
+b=10
+
+def guass(npts,a,b,x,w):
+    pp=0
+    m=(npts+1)//2
+    eps=3e-10
+    for i in range(1,m+1):
+        t=np.cos(np.pi*(float(i)-0.25)/(float(npts)+0.5))
+        t1=1
+        while ((np.absolute(t-t1))>=eps):
+            p1,p2=1,0
+            for j in range(1,npts+1):
+                p3=p2
+                p2=p1
+                p1=((2*j-1)*t*p2-(j-1)*p3)/j
+            pp=npts*(t*p1-p2)/(t*t-1)
+            t1=t;t=t1-p1/pp
+        x[i-1]=-t
+        x[npts-i]=t
+        w[i-1]=2/((1-t*t)*pp*pp)
+        w[npts-i]=w[i-1]
+    for i in range(0,npts):
+        x[i]=x[i]*(b-a)/2 + (b+a)/2
+        w[i]=w[i]*(b-a)/2
+
+for M in range(16,32,8):
+    z=[-1024, -512, -256, -128, -64,-32,-16,-8,-4,-2]
+    for lmbda in z:
+          A=np.zeros((M,M),float)
+          WR=np.zeros((M),float)
+          k=np.zeros((M),float)
+          w=np.zeros((M),float)
+          guass(M,min1,max1,k,w)
+          for i in range(0,M):
+              for j in range(0,M):
+                  VR=lmbda/2/u*np.sin(k[i]*b)/k[i]*np.sin(k[j]*b)*k[j]
+                  A[i,j]=2/np.pi*VR*k[j]*k[j]*w[j]
+                  if (i==j):
+                      A[i,j]+=k[i]*k[i]/2/u
+          Es,evectors=la.eig(A)
+          realev=Es.real
+          for j in range(0,M):
+              if (realev[j]<0):
+                  print("M(size),lmbda,ReE=",M," ",lmbda, " ",realev[j])
+                  break
+              
+                
