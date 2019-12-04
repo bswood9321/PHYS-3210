@@ -7,7 +7,7 @@ Created on Mon Dec  2 18:23:00 2019
 
 import numpy as np
 import matplotlib.pyplot as plt
-import vpython as vp
+
 from mayavi import mlab
 
 
