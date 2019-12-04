@@ -46,16 +46,12 @@ VYS=[vysun]
 VXE=[vxearth]
 VYE=[vyearth]
 
-dt=1
+dt=60
 t=0
 T=[t]
 while t<= (60*60*24*365):
-    rs=np.sqrt(XS[-1]**2+YS[-1]**2)
-    re=np.sqrt(XE[-1]**2+YE[-1]**2)
-    theta=np.arctan(YE[-1]/XE[-1])
-    F=((G*MSun*ME*(rs-re)/(np.absolute(rs-re))**3))
-    Fx=F*np.cos(theta)
-    Fy=F*np.sin(theta)
+    Fx=-G*MSun*ME*XE[-1]/((XE[-1]**2+YE[-1]**2)**1.5)
+    Fy=-G*MSun*ME*YE[-1]/((XE[-1]**2+YE[-1]**2)**1.5)
     vxearth=vxearth+Fx/ME*dt
     vyearth=vyearth+Fy/ME*dt
     xearth=xearth+vxearth*dt
@@ -68,4 +64,7 @@ while t<= (60*60*24*365):
     t=t+dt
     
 plt.plot(XE,YE)
-plt.show()    
+plt.grid()
+plt.show()  
+
+
